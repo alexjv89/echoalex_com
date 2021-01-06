@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "add-domain": "echo \"new.echoalex.com\" > _site/CNAME",
     "build": "env NODE_ENV=production npx eleventy"
   },
   "keywords": [],
