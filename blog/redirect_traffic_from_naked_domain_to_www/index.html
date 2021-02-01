@@ -9,7 +9,7 @@
 
 
     <!-- Site Properties -->
-    <title>Readme</title>
+    <title>Redirect traffic from naked domain to www using aws s3 and cloudflare</title>
 
     <link rel="stylesheet" href="/assets/sematic/semantic.min.css">
     <style type="text/css">
@@ -173,7 +173,7 @@
           </div>
         </div>
       </div> -->
-      Readme
+      Redirect traffic from naked domain to www using aws s3 and cloudflare
       TEST
       <br>
 <br>
@@ -183,8 +183,30 @@
 	<div class='ui centered stackable grid'>
 		<div class='ten wide large screen twelve wide computer forteen wide tablet column'>
 			<div class='ui basic segment' style="font-size: 18px;line-height: 1.5em">
-				<h1>Page header1</h1>
-<h1>test 2</h1>
+				<h1>Redirect traffic from naked domain to www using aws s3 and cloudflare</h1>
+<p>This assumes that you already have an AWS account and a Cloudflare account.</p>
+<h2>Use case – Why bother?</h2>
+<p>You have some application server or static website running on www subdomain and you want to redirect traffic from the naked domain(eg highlyreco.com) to the www subdomain(eg www.highlyreco.com). Why? Because :</p>
+<ol>
+<li>When users share your domain verbally, they then to not include www. They just say – go check out highlyreco.com. When the other user tries highlyreco.com they get nothing</li>
+<li>SEO – generally you want to make sure everything is clean and all search results contain www subdomain</li>
+</ol>
+<h2>Configuration on AWS</h2>
+<h4>1. Click create bucket from S3 console</h4>
+<p>Click on create bucket</p>
+<p><img src="/files/Screen-Shot-2018-09-14-at-2.10.36-PM.png" alt=""></p>
+<p>Enter the naked domain as the bucket name and select a region.</p>
+<p><img src="/files/create-bucket.png" alt=""></p>
+<p>Under “set permissions” tab in the bucket creation process, from the “Manage public permissions” choose “Grant public read access to this bucket”</p>
+<p><img src="/files/make-bucket-public.png" alt=""></p>
+<h4>2. Enable static site hosting and redirect to www subdomain</h4>
+<p>Click on the newly created bucket. Click on the properties tab and you will see the following.</p>
+<p><img src="/files/everything-configured-1736x1004.png" alt=""></p>
+<p>Click on Static site hosting. In the dialog box that opens, choose option – “Redirect requests”. In the input boxes enter the target www domain(eg www.highlyreco.com) and the protocol.  Copy the endpoint shown in the modal. You will need to for DNS mapping. <img src="/files/static-website-hosting.png" alt=""></p>
+<h2>Configuration on Cloudflare:</h2>
+<h4>1. Add a CNAME record to your naked domain</h4>
+<p>On a regular DNS router, you cant add a “CNAME record” to a naked domain. However cloudflare supports. Cloudflare internally converts that to an “A record”. It should look this when you are done. <img src="/files/cloudflare-cname-1736x98.png" alt=""></p>
+<p>Thats it. Your naked domain(highlyreco.com) will now redirect to (www.highlyreco.com).</p>
 
 			</div>
 		</div>
