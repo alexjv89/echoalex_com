@@ -15,7 +15,7 @@ I like to think of myself as having 2 key interests:
 - [I like to cycle](http://letsgocycle.in/)
 
 
-## Work ex
+## Work ex:
 
 ### Apr 2020 - Current - Founder at [Mr Albert](https://mralbert.in/)
 We help small business with GST filing. As a small business, you already have a ton of things to do. Have over GST filing responsibility to Mr Albert and you can focus on your business. Mr Albert gets your GST filing done accurately and hassle free. 
@@ -37,12 +37,14 @@ I did not stay at postman for long. I loved working with the postman team. But a
 ### 2011 - June 2015 - Founder at Makeystreet
 This was a dream project. I was passionate maker but a lousy entrepreneur. I kind of wanted to create a maker revolution. Obviously that never happened. During this time, I had a few projects - [Tangle](https://www.indiegogo.com/projects/tangle#/) was one of the most interesting. I was lousy at selling stuff, but good at making stuff.
 
-## Education
+## Education:
+
 ### 2007 - 2012 - Dual degree - [Engineering Design](https://ed.iitm.ac.in/) from [IIT Madras](https://www.iitm.ac.in/).
 Did I mention I like to make stuff? I started college at IIT Madras as a civil engineering student. Given that I like to make stuff, and Department of engineering design was about making products, I shifted to this department in my first year. Loved it every since. 
 
 
-## Alex on the internet
+## Alex on the internet:
+
 - [Twitter](https://twitter.com/alexjv89)
 - [Strava](https://www.strava.com/athletes/12398973)
 - [Github](https://github.com/alexjv89)
