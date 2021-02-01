@@ -1,2 +1,7 @@
 _site
 node_modules
+
+
+/.obsidian/workspace
+.obsidian/workspace
+.obsidian/graph.json
