@@ -113,7 +113,6 @@
 
 
     </style>
-    <script src="/assets/sails.io.js"></script>
       <script src="/assets/jquery.min.js"></script>
       <script src="/assets/sematic/semantic.min.js"></script>
     <script>
@@ -145,15 +144,18 @@
     <!-- Page Contents -->
     <div class="pusher">
       <div class="ui large top fixed secondary pointing menu" style="background: rgba(255,255,255,1)">
-        <div class="ui container" >
+        <div class="ui container" style="font-size: 16px">
           <a class="toc item">
             <i class="sidebar icon"></i>
           </a>
-          <a class="item" href='/'>Home</a>
-          <a class="item" href='/about/'>About</a>
-          <a class="item" href='/blog/'>Blog</a>
-          <a class="item" href='/projects/'>Projects</a>
-          <a class="item" href='/now/'>Now</a>
+          <div class='center menu'>
+            <a class="item" href='/'>Home</a>
+            <a class="item" href='/about/'>About</a>
+            <a class="item" href='/blog/'>Blog</a>
+            <a class="item" href='/projects/'>Projects</a>
+              
+            <a class="item" href='/now/'>Now</a>
+          </div>
           
         </div>
       </div>
@@ -178,13 +180,18 @@
 <br>
 <div class='ui container'>
 	
-	
-	<h1>Blog Archive</h1>
+	<div class='ui centered stackable grid'>
+		<div class='ten wide large screen twelve wide computer forteen wide tablet column'>
+			<div class='ui basic segment' style="font-size: 18px;line-height: 1.5em">
+				<h1>Blog Archive</h1>
 <h2>2020</h2>
 <ul>
 <li><a href="/blog/first_post">Sample post</a></li>
 </ul>
 
+			</div>
+		</div>
+	</div>
 </div>
 
     </div>
