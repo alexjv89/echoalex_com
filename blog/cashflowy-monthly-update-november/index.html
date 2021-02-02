@@ -9,7 +9,7 @@
 
 
     <!-- Site Properties -->
-    <title>Cashflowy – Monthly update (October)</title>
+    <title>Cashflowy – Monthly update (November)</title>
 
     <link rel="stylesheet" href="/assets/sematic/semantic.min.css">
     <style type="text/css">
@@ -173,7 +173,7 @@
           </div>
         </div>
       </div> -->
-      Cashflowy – Monthly update (October)
+      Cashflowy – Monthly update (November)
       TEST
       <br>
 <br>
@@ -183,80 +183,78 @@
 	<div class='ui centered stackable grid'>
 		<div class='ten wide large screen twelve wide computer forteen wide tablet column'>
 			<div class='ui basic segment' style="font-size: 18px;line-height: 1.5em">
-				<h1>Cashflowy – Monthly update (October)</h1>
+				<h1>Cashflowy – Monthly update (November)</h1>
 <h2>Updates summary:</h2>
 <h3>Major:</h3>
 <ul>
-<li>Auto create account from emails</li>
-<li>Weekly email report</li>
-<li>Support for HDFC bank customers</li>
-<li>Support for city bank credit card</li>
-<li>Support for Amazon pay</li>
-<li>Automated snapshots</li>
-<li>Unaccounted money</li>
-<li>Transactions are now 3 types – expense, income and transfer</li>
-<li>Update in list transactions view</li>
+<li>First self hosting user</li>
+<li>Self hosting guideline</li>
+<li>Doc parser – initial implementation</li>
+<li>Tags</li>
+<li>Rule engine – initial implementation</li>
+<li>Support more banks/credit cards</li>
+<li><strong>First paying user</strong></li>
 </ul>
 <h3>Minor:</h3>
 <ul>
-<li>Display only one snapshot of the day</li>
-<li>Category dropdown refactored</li>
-<li>Display account balance on the dashboard</li>
-<li>Edit account</li>
+<li>Bug fix – default account</li>
+<li>Support for Singapore dollars</li>
+<li>Highlight in yellow – “things that you need to take action on”</li>
+<li>Hover over amount to see foreign currency in INR</li>
 </ul>
 <h3>Stats:</h3>
 <ul>
-<li>Commits – 46</li>
+<li>Commits – 45</li>
 <li>Customers who are actively using the product – 5</li>
-<li>Revenue – nil</li>
+<li>Self-Hosted users – 1</li>
+<li>Paying users – 1</li>
+<li>Commits from external users – 4 (one user)</li>
+<li>Revenue – 3k</li>
 <li>Expense(excluding manpower) – nil</li>
 </ul>
 <h2>Details:</h2>
-<h3>Auto create account from emails</h3>
-<p>When onboarding new customers, it is tedious to create all accounts on Cashflowy. Sometimes the customer forgets to add some accounts as well. This resulted in Cashflowy’s parsing engine to throw errors as the account mentioned in the parsed email did not exist. With this update, if the account does not exist, then the parsing engine auto creates accounts for the user on Cashflowy.</p>
-<h3>Weekly email report</h3>
-<p>We now send out a report on your cash flow every week.</p>
-<h3>Support for HDFC bank customers</h3>
-<p>Parsers for HDFC bank are now in production. HDFC bank sends the following information via email:</p>
+<h4>First self-hosting user</h4>
+<p>This is month where we have the first person to self host cashflowy – Alex Joseph. Alex Joseph works as a data-scientist at <a href="http://www.systeminsights.com/">System Insights</a>. He has been doing his personal accounting for part 5+ years, and is excited that cashflowy is open source and is try it out.</p>
+<h4>Self-hosting guideline</h4>
+<p>Now that we have the first person who showed interest in self hosting cashflowy, we needed a self-hosting guide. We do now – https://github.com/alexjv89/cashflowy/blob/master/docs/self_hosting.md . If you are a developer, you should find the self-hosting guide very easy to follow.</p>
+<h4>Doc parser – initial implementation</h4>
+<p>This is a contribution by Akash. We have the basic tech to parse documents. Its important to parse bank statements/credit card statements for the following reasons:</p>
+<ol>
+<li>Some information is not available in email eg. HDFC credit card transactions</li>
+<li>For being exhaustive(all sources of data is looked into)</li>
+<li>To inspire confidence to user that the accounts are accurate</li>
+</ol>
+<p>Currently ,we have doc-parser for HDFC credit card only. We use docparser.com for processing documents. This is an external service. Using this service is a little difficult when self-hosting. Alex Joseph is testing/helping with a custom build doc parser. We might also consider using the newly released AWS textract.</p>
+<h4>Tags</h4>
+<p>Categories are different from tags. Categories are buckets. Every expense needs to have a category. Tags are optional. Expense can have more than one tag. Tags are means to come back to something or group something together for some organizing purpose other than budgeting. Categories are dedicated for budgeting. For every other grouping purpose use tags.</p>
+<p>Want to know the expense associated with a particular location – use tags. Want to know expenses that are experimental – use tags. Want to know the expense associated with weddings that you attended this year – use tags. Want to know expense in a particular trip – use tags.</p>
+<h4>Rule engine – initial implementation</h4>
+<p>This is an initial implementation of rule engine. Example of a rule – Want to categorize all transactions to uber as transport, write a rule. Rules engines are simple logic engines that you can use to automate some of your repetitive work. SBI does not have account numbers in some of their statements. Using rule engine, you can specify that if a particular type of email is parsed, and if it does not contain an account number, then you can inject an account number into the parsed data. This way, the accounting is done accurately.</p>
+<p>This is only partly implemented. I will talk about it more in coming months.</p>
+<h4>Support more banks/credit cards</h4>
+<p>An an ongoing activity, as an when we come across new users who use a bank that we dont support yet, we write parsers for emails send by these banks/credit cards. This month we have parsers written for the following:</p>
 <ul>
-<li>UPI transactions</li>
-<li>NEFT/IMPS transactions</li>
-<li>Net banking/debit card transaction</li>
-<li>ATM withdrawal</li>
+<li>Yes bank credit card</li>
+<li>SBI bank</li>
+<li>Zerodha – auto transfer</li>
 </ul>
-<p>Parsers for all the above email types are written and is hence processed by Cashflowy.</p>
-<p><strong>Note:</strong> HDFC does not send an email for credit card transaction. Hence your credit card transactions will not show up on Cashflowy. We are figuring out ways to make sure that data is available on the system.</p>
-<h3>Support for Citi Bank customers(credit card only for now)</h3>
-<p>Citi bank has another weird quirk. Citi bank sends email transactions alerts, but for bank transactions, the account number is not mentioned in the email. Hence the parsing engines cannot figure out which account to attribute that transaction to. We could set up some default account but then what if you have 2 citi bank accounts. Due to this reason, the parser for citi bank is put on the hold.</p>
-<p>Citi bank credit card transaction contains card details. This parser is in production.</p>
-<h3>Support for Amazon pay</h3>
-<p>Parsers for amazon pay is in place. Whether you pay on Amazon or you pay a 3rd party via Amazon pay, the parsing engine captures details and adds those transactions to your Cashflowy transactions.</p>
-<h3>Automated snapshots</h3>
-<p>The state of your account at a given point of time is called .a snapshot. For Bank account a snapshot means balance. For credit card account, a snapshot means – how much you need to pay. Some banks/wallets share the state of the account along with the transaction. A snapshot is auto-created in this case. Eg, Automated snapshots can be created from transactions from ICICI bank, ICICI credit card, HDFC bank, Amazon pay etc.</p>
-<h3>Unaccounted money</h3>
-<p><img src="/files/Screen-Shot-2018-11-02-at-12.38.33-AM.png"></img>
-Cashflowy is an accounting tool. It logs what happens to your money. Currently, Cashflowy is capturing some transactions for you, but how do you know if Cashflowy is doing an exhaustive job? What if Cashflowy is missing transactions or misunderstanding transactions? How do you know if you can trust the data that Cashflowy shows you?</p>
-<p>To answer the trust question is why – Unaccounted money is introduced. Unaccounted money is money that is not recorded in Cashflowy. Snapshots give us information on how much money your account contained at any given point of time. So if you sum the transactions between 2 snapshots and add that with the first snapshot, that figure should not be different from the 2nd snapshot. This difference is unaccounted money.</p>
-<p>The closer unaccounted money is to zero, the more accurate your accounting is.</p>
-<h3>Transactions are now 3 types – expense, income and transfer</h3>
-<p><img src="/files/Screen-Shot-2018-11-02-at-12.28.51-AM.png"></img>
-Income transaction – in this case a refund on credit card</p>
-<p><img src="/files/Screen-Shot-2018-11-02-at-12.28.30-AM.png"></img>
-Expense transaction</p>
-<p><img src="/files/Screen-Shot-2018-11-02-at-12.28.08-AM.png"></img>
-Transfer of money into Paytm account from the credit card account</p>
-<p>Until now, every transaction was considered an expense. That is not true. You moving money to Paytm from your credit card is not an expense. It is a transfer. You have not spent that money yet. Some users might consider any transfer to Paytm as a travel-related expense as they might be using it only for Uber. This case is increasingly becoming smaller as more and more physical stores support Paytm. Similarly paying credit card bill via bank account is account transfer. Making this distinction makes your accounting more accurate and meaningful.</p>
-<p>Income transactions are also called out separately.</p>
-<h3>Update in list transactions view</h3>
-<p>With support for additional kinds of transactions(income, expense, transfer), the UI showing transactions needed an upgrade.</p>
-<h2>Interested in trying out cashflowy?</h2>
-<p>Write to me – alexjv89 at gmail.</p>
+<p>Yes bank credit card filters was written by Alex Joseph.</p>
+<h4>First paying user</h4>
+<p>This is a major milestone. Cashflowy has its first paying user- <a href="https://www.linkedin.com/in/susundar">Sunil</a> – a professional consultant who consults for IKP EDEN. Sunil is paying Rs 3000 per year. A lot of my focus is going to make sure he gets his money’s worth over the next year.</p>
+<p>Cashflowy is build as a solution to scratch my own itch. I wanted an accounting solution that I can use for life. I wanted something that I can trust, something that will not sell my data. Something that can I pay for, so that the solution will have my best interest in mind both in the short term as well as in the long term. I wanted something that in a long term can nudge me into good financial habits so that my financial health is taken care of. I also wanted something that in the short term can eliminate grunt work associated with tax filing, being a consultant.</p>
+<p>Sunil is a professional consultant such as myself. His requirements are definitely not doing to be identical to mine but there is definitely some overlap, adequate overlap to find cashflowy useful. The short term tax grunt work is something that he shares as well. So I maybe some of the value proposition that I wanted from cashflowy resonates with him as well.</p>
+<p>Honestly, I was not expecting a paying customer so fast. I am not convinced that cashflowy is a good product yet. It has a long way to go – just to satisfy my requirements. This one customer also does not prove that cashflowy is a viable business yet. Maybe when I get the 10th paying customer, I will start considering cashflowy as something that can be a business.</p>
+<p>I honestly think there is something special about professional consultants(PCs). Salaries folks gets predictable income. PCs have taken the first step to owning a business, to obtaining financial freedom. Grunt work associated with tax filings is one thing, but I have noticed they are also more likely to think about long term money management and wealth creation better than salaried folks. There are definitely salaried folks thinking in that direction, but the numbers are less(initial observation). Salaried folks sort of want it, but dont seem to want it enough. Not the case with professional consultants.</p>
+<p>Cashflowy is going to focus on this market for a while unless my assumptions/deductions are proven wrong. While we improve the product and make sure that cashflowy remains a finished product for current users, I will also be looking for users similar to Sunil and myself.</p>
 
 			</div>
 		</div>
 	</div>
 </div>
 
+<script type="text/javascript">
+	$('a[href="/blog/"]').addClass('active');
+</script>
     </div>
 
 

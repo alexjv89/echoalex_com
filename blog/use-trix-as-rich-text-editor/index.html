@@ -9,7 +9,7 @@
 
 
     <!-- Site Properties -->
-    <title>What I am doing now</title>
+    <title>Use trix as rich text editor</title>
 
     <link rel="stylesheet" href="/assets/sematic/semantic.min.css">
     <style type="text/css">
@@ -173,7 +173,7 @@
           </div>
         </div>
       </div> -->
-      What I am doing now
+      Use trix as rich text editor
       TEST
       <br>
 <br>
@@ -183,27 +183,23 @@
 	<div class='ui centered stackable grid'>
 		<div class='ten wide large screen twelve wide computer forteen wide tablet column'>
 			<div class='ui basic segment' style="font-size: 18px;line-height: 1.5em">
-				<h1>What I am doing now</h1>
-<p>Posted on <a href="https://www.echoalex.com/now/">Published April 9, 2020</a> by <a href="https://www.echoalex.com/author/alexjv89/">alexjv89</a></p>
-<p>Context: Seeing <a href="https://sivers.org/now">Derek Sivers’ now page</a>, I am inspired to create one myself. This is my now page. <a href="https://nownownow.com/about">Learn more now pages</a>.</p>
-<hr>
-<p>I have been planning to work on something of my own for a long time. I love to make things – make electronics, make software, make products, make companies etc. For the last 4 years and 3 months, I have been working with <a href="https://www.atherenergy.com/">Ather</a> as head of business software. My original plan was to work at Ather for 6 months and start something, but then life happened and 6 months plan become 4 year plan.</p>
-<p>End of march 2020, my gig with Ather is finally done and I am planning to work on a bunch of things. These are the things that I am most excited to work on:</p>
-<ul>
-<li><a href="https://www.mralbert.in/">mralbert</a> – A GST filing service for freelancers and consultants (only in India)</li>
-<li><a href="https://github.com/asyncauto/cashflowy">cashflowy</a> – An open source accounting software for small business owners</li>
-<li><a href="http://switchless.io/">switchless.io</a> – An open source tech stack that helps reduce your switching cost.</li>
-<li><a href="https://www.asyncauto.com/">asyncauto</a> – A specialised software consulting dev shop.</li>
-<li><a href="https://www.highlyreco.com/">highlyreco</a> – Recommendations from people you look up to.</li>
-</ul>
-<h3>A pinch of self doubt</h3>
-<p>I do have a good amount of self doubt. Will I be successful in atleast one of these products? Will I make enough money to survive, if not thrive? Will I have to go back to a regular job. Timing is also something that I am slightly bothered by. I quit job at a time when markets are not doing well due to the corona situation.</p>
-<p><strong>Here is how I mitigate my self doubt:</strong></p>
-<ul>
-<li>I am reasonably skilled.</li>
-<li>I have enough money saved up to last me a year</li>
-<li>I really enjoy working on my own/I hate working in a large company. I really really don’t want to go back and get a job.</li>
-</ul>
+				<h1>Use trix as rich text editor</h1>
+<p><img src="/files/E968876E-1ADC-4F82-AF1B-309209431FE6.png"></img>
+Trix used with semantic ui</p>
+<p>Semantic UI does not support a native wysiwyg. <a href="https://github.com/basecamp/trix">Trix</a> by <a href="https://basecamp.com/">Basecamp team</a> is a very elegant rich text editor (wysiwyg).</p>
+<p>Use the <a href="https://www.npmjs.com/package/sails-business-stack-generator">sails-business-stack-generator</a> to install trix in your sails project.</p>
+<p>Sample code for using trix.</p>
+<pre><code>&lt;div class=&quot;field&quot;&gt;
+    &lt;label&gt;Summary of work for this subscription&lt;/label&gt;
+    &lt;input id='report_body' type=&quot;hidden&quot; name=&quot;report_body&quot; placeholder=&quot;write your summary here&quot; value=&quot;&lt;%=dr.body%&gt;&quot;&gt;
+    &lt;trix-editor input=&quot;report_body&quot;&gt;&lt;/trix-editor&gt;
+&lt;/div&gt;
+</code></pre>
+<p>Things to note about the above code – 1) trix editor has an attribute called input. This should be the id of the input element on which the trix editor is applied. 2) Also make sure that this page includes the trix js and trix css.</p>
+<pre><code>&lt;link rel='stylesheet' type='text/css' href='/trix/trix.css'&gt; 			
+&lt;script type='text/javascript' src='/trix/trix.js'&gt;&lt;/script&gt; 	
+</code></pre>
+<p>This post is part of the business solution stack series</p>
 
 			</div>
 		</div>

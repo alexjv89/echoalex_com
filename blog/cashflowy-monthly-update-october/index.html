@@ -9,7 +9,7 @@
 
 
     <!-- Site Properties -->
-    <title>What I am doing now</title>
+    <title>Cashflowy – Monthly update (October)</title>
 
     <link rel="stylesheet" href="/assets/sematic/semantic.min.css">
     <style type="text/css">
@@ -173,7 +173,7 @@
           </div>
         </div>
       </div> -->
-      What I am doing now
+      Cashflowy – Monthly update (October)
       TEST
       <br>
 <br>
@@ -183,27 +183,74 @@
 	<div class='ui centered stackable grid'>
 		<div class='ten wide large screen twelve wide computer forteen wide tablet column'>
 			<div class='ui basic segment' style="font-size: 18px;line-height: 1.5em">
-				<h1>What I am doing now</h1>
-<p>Posted on <a href="https://www.echoalex.com/now/">Published April 9, 2020</a> by <a href="https://www.echoalex.com/author/alexjv89/">alexjv89</a></p>
-<p>Context: Seeing <a href="https://sivers.org/now">Derek Sivers’ now page</a>, I am inspired to create one myself. This is my now page. <a href="https://nownownow.com/about">Learn more now pages</a>.</p>
-<hr>
-<p>I have been planning to work on something of my own for a long time. I love to make things – make electronics, make software, make products, make companies etc. For the last 4 years and 3 months, I have been working with <a href="https://www.atherenergy.com/">Ather</a> as head of business software. My original plan was to work at Ather for 6 months and start something, but then life happened and 6 months plan become 4 year plan.</p>
-<p>End of march 2020, my gig with Ather is finally done and I am planning to work on a bunch of things. These are the things that I am most excited to work on:</p>
+				<h1>Cashflowy – Monthly update (October)</h1>
+<h2>Updates summary:</h2>
+<h3>Major:</h3>
 <ul>
-<li><a href="https://www.mralbert.in/">mralbert</a> – A GST filing service for freelancers and consultants (only in India)</li>
-<li><a href="https://github.com/asyncauto/cashflowy">cashflowy</a> – An open source accounting software for small business owners</li>
-<li><a href="http://switchless.io/">switchless.io</a> – An open source tech stack that helps reduce your switching cost.</li>
-<li><a href="https://www.asyncauto.com/">asyncauto</a> – A specialised software consulting dev shop.</li>
-<li><a href="https://www.highlyreco.com/">highlyreco</a> – Recommendations from people you look up to.</li>
+<li>Auto create account from emails</li>
+<li>Weekly email report</li>
+<li>Support for HDFC bank customers</li>
+<li>Support for city bank credit card</li>
+<li>Support for Amazon pay</li>
+<li>Automated snapshots</li>
+<li>Unaccounted money</li>
+<li>Transactions are now 3 types – expense, income and transfer</li>
+<li>Update in list transactions view</li>
 </ul>
-<h3>A pinch of self doubt</h3>
-<p>I do have a good amount of self doubt. Will I be successful in atleast one of these products? Will I make enough money to survive, if not thrive? Will I have to go back to a regular job. Timing is also something that I am slightly bothered by. I quit job at a time when markets are not doing well due to the corona situation.</p>
-<p><strong>Here is how I mitigate my self doubt:</strong></p>
+<h3>Minor:</h3>
 <ul>
-<li>I am reasonably skilled.</li>
-<li>I have enough money saved up to last me a year</li>
-<li>I really enjoy working on my own/I hate working in a large company. I really really don’t want to go back and get a job.</li>
+<li>Display only one snapshot of the day</li>
+<li>Category dropdown refactored</li>
+<li>Display account balance on the dashboard</li>
+<li>Edit account</li>
 </ul>
+<h3>Stats:</h3>
+<ul>
+<li>Commits – 46</li>
+<li>Customers who are actively using the product – 5</li>
+<li>Revenue – nil</li>
+<li>Expense(excluding manpower) – nil</li>
+</ul>
+<h2>Details:</h2>
+<h3>Auto create account from emails</h3>
+<p>When onboarding new customers, it is tedious to create all accounts on Cashflowy. Sometimes the customer forgets to add some accounts as well. This resulted in Cashflowy’s parsing engine to throw errors as the account mentioned in the parsed email did not exist. With this update, if the account does not exist, then the parsing engine auto creates accounts for the user on Cashflowy.</p>
+<h3>Weekly email report</h3>
+<p>We now send out a report on your cash flow every week.</p>
+<h3>Support for HDFC bank customers</h3>
+<p>Parsers for HDFC bank are now in production. HDFC bank sends the following information via email:</p>
+<ul>
+<li>UPI transactions</li>
+<li>NEFT/IMPS transactions</li>
+<li>Net banking/debit card transaction</li>
+<li>ATM withdrawal</li>
+</ul>
+<p>Parsers for all the above email types are written and is hence processed by Cashflowy.</p>
+<p><strong>Note:</strong> HDFC does not send an email for credit card transaction. Hence your credit card transactions will not show up on Cashflowy. We are figuring out ways to make sure that data is available on the system.</p>
+<h3>Support for Citi Bank customers(credit card only for now)</h3>
+<p>Citi bank has another weird quirk. Citi bank sends email transactions alerts, but for bank transactions, the account number is not mentioned in the email. Hence the parsing engines cannot figure out which account to attribute that transaction to. We could set up some default account but then what if you have 2 citi bank accounts. Due to this reason, the parser for citi bank is put on the hold.</p>
+<p>Citi bank credit card transaction contains card details. This parser is in production.</p>
+<h3>Support for Amazon pay</h3>
+<p>Parsers for amazon pay is in place. Whether you pay on Amazon or you pay a 3rd party via Amazon pay, the parsing engine captures details and adds those transactions to your Cashflowy transactions.</p>
+<h3>Automated snapshots</h3>
+<p>The state of your account at a given point of time is called .a snapshot. For Bank account a snapshot means balance. For credit card account, a snapshot means – how much you need to pay. Some banks/wallets share the state of the account along with the transaction. A snapshot is auto-created in this case. Eg, Automated snapshots can be created from transactions from ICICI bank, ICICI credit card, HDFC bank, Amazon pay etc.</p>
+<h3>Unaccounted money</h3>
+<p><img src="/files/Screen-Shot-2018-11-02-at-12.38.33-AM.png"></img>
+Cashflowy is an accounting tool. It logs what happens to your money. Currently, Cashflowy is capturing some transactions for you, but how do you know if Cashflowy is doing an exhaustive job? What if Cashflowy is missing transactions or misunderstanding transactions? How do you know if you can trust the data that Cashflowy shows you?</p>
+<p>To answer the trust question is why – Unaccounted money is introduced. Unaccounted money is money that is not recorded in Cashflowy. Snapshots give us information on how much money your account contained at any given point of time. So if you sum the transactions between 2 snapshots and add that with the first snapshot, that figure should not be different from the 2nd snapshot. This difference is unaccounted money.</p>
+<p>The closer unaccounted money is to zero, the more accurate your accounting is.</p>
+<h3>Transactions are now 3 types – expense, income and transfer</h3>
+<p><img src="/files/Screen-Shot-2018-11-02-at-12.28.51-AM.png"></img>
+Income transaction – in this case a refund on credit card</p>
+<p><img src="/files/Screen-Shot-2018-11-02-at-12.28.30-AM.png"></img>
+Expense transaction</p>
+<p><img src="/files/Screen-Shot-2018-11-02-at-12.28.08-AM.png"></img>
+Transfer of money into Paytm account from the credit card account</p>
+<p>Until now, every transaction was considered an expense. That is not true. You moving money to Paytm from your credit card is not an expense. It is a transfer. You have not spent that money yet. Some users might consider any transfer to Paytm as a travel-related expense as they might be using it only for Uber. This case is increasingly becoming smaller as more and more physical stores support Paytm. Similarly paying credit card bill via bank account is account transfer. Making this distinction makes your accounting more accurate and meaningful.</p>
+<p>Income transactions are also called out separately.</p>
+<h3>Update in list transactions view</h3>
+<p>With support for additional kinds of transactions(income, expense, transfer), the UI showing transactions needed an upgrade.</p>
+<h2>Interested in trying out cashflowy?</h2>
+<p>Write to me – alexjv89 at gmail.</p>
 
 			</div>
 		</div>
