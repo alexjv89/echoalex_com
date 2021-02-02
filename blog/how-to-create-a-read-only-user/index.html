@@ -9,7 +9,7 @@
 
 
     <!-- Site Properties -->
-    <title>sample post</title>
+    <title>How to create a read only user?</title>
 
     <link rel="stylesheet" href="/assets/sematic/semantic.min.css">
     <style type="text/css">
@@ -173,7 +173,7 @@
           </div>
         </div>
       </div> -->
-      sample post
+      How to create a read only user?
       TEST
       <br>
 <br>
@@ -183,31 +183,40 @@
 	<div class='ui centered stackable grid'>
 		<div class='ten wide large screen twelve wide computer forteen wide tablet column'>
 			<div class='ui basic segment' style="font-size: 18px;line-height: 1.5em">
-				<h1>Blog Archive</h1>
-<h2>2020</h2>
+				<h1>How to create a read only user?</h1>
+<p>Posted on<a href="https://www.echoalex.com/how-create-a-read-only-user/">Published May 20, 2020</a> by <a href="https://www.echoalex.com/author/alexjv89/">alexjv89</a></p>
+<h3>Good reasons why someone wants to access db</h3>
 <ul>
-<li><a href="/blog/making-the-decision-to-purchase-visualise-value">making-the-decision-to-purchase-visualise-value</a></li>
-<li><a href="/blog/how-to-create-a-read-only-user">how-to-create-a-read-only-user</a></li>
-<li><a href="/blog/day-1-of-1hr-meditation">day-1-of-1hr-meditation</a></li>
+<li>Analytics tools like metabase</li>
+<li>Datascience team wants access to tables</li>
 </ul>
-<h2>2019</h2>
+<h3>Why create read only users?</h3>
 <ul>
-<li><a href="/blog/change-zsh-terminal-prompt">change-zsh-terminal-prompt</a></li>
-<li><a href="/blog/book-digest-knock-knock-by-seth-godin">book-digest-knock-knock-by-seth-godin</a></li>
-<li><a href="/blog/use-trix-as-rich-text-editor">use-trix-as-rich-text-editor</a></li>
-<li><a href="/blog/simple-internal-sitemaps">simple-internal-sitemaps</a></li>
-<li><a href="/blog/setup-metabase-via-aws-elastic-beanstalk">setup-metabase-via-aws-elastic-beanstalk</a></li>
-<li><a href="/blog/setting-up-synergy-to-auto-start-on-boot">setting-up-synergy-to-auto-start-on-boot</a></li>
-<li><a href="/blog/using-cashflowy-on-mobile-like-an-app">using-cashflowy-on-mobile-like-an-app</a></li>
+<li>Analytics tools are supposed to be used by non-developers. You dont want them to accidentally alter data</li>
+<li>Only the app should alter data. Dont give people an opportunity to alter data outside of the app or via the api.</li>
 </ul>
-<h2>2018</h2>
+<h3>How to</h3>
+<pre><code>-- create user
+CREATE USER dbreadonlyuser WITH PASSWORD 'somepass';
+
+-- give user permission to connect to db
+GRANT CONNECT ON DATABASE dbname TO dbreadonlyuser;
+
+-- give user permission to access schema
+GRANT USAGE ON SCHEMA &quot;public&quot; TO dbreadonlyuser;
+
+-- grants access to all tables in this schema public for this user
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO dbreadonlyuser;
+
+-- grants access to all future tables that you might add to the db. This way you dont want to keep running the previous command again and again when you create new table
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+GRANT SELECT ON TABLES TO dbreadonlyuser;
+</code></pre>
+<h3>Things to replace:</h3>
 <ul>
-<li><a href="/blog/cashflowy-monthly-update-november">cashflowy-monthly-update-november</a></li>
-<li><a href="/blog/cashflowy-monthly-update-october">cashflowy-monthly-update-october</a></li>
-<li><a href="/blog/thinking-of-things-from-a-long-term-perspective">thinking-of-things-from-a-long-term-perspective</a></li>
-<li><a href="/blog/redirect-traffic-from-naked-domain-to-www">/blog/redirect-traffic-from-naked-domain-to-www</a></li>
-<li><a href="/blog/be-so-good-that-they-cant-ignore-you">Be so good that they cant ignore you</a></li>
-<li><a href="/projects">projects</a></li>
+<li><strong>dbreadonlyuser</strong> – replace this with your choice of db user name</li>
+<li><strong>somepass</strong> – replace this with your choice of password</li>
+<li><strong>dbname</strong> – replace with the database’s name that you want to access</li>
 </ul>
 
 			</div>
