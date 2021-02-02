@@ -258,7 +258,9 @@ Transfer of money into Paytm account from the credit card account</p>
 </div>
 
 <script type="text/javascript">
-	$('a[href="/blog/"]').addClass('active');
+	if(window.location.pathname.indexOf('/blog/')>-1){
+		$('a[href="/blog/"]').addClass('active');
+	}
 </script>
     </div>
 
