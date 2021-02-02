@@ -13,6 +13,6 @@
   "license": "ISC",
   "dependencies": {
     "@11ty/eleventy": "^0.11.1",
-    "markdown-it-replace-link": "^1.1.0"
+    "markdown-it-obsidian": "^1.0.1"
   }
 }

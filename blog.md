@@ -11,7 +11,8 @@ layout: layouts/post.ejs
 
 
 ## 2018
-- [[cashflowy-monthly-update-october]]
+- [[cashflowy_monthly_update_october]]
 - [[thinking-of-things-from-a-long-term-perspective]]
-- [[redirect-traffic-from-naked-domain-to-www]]
-- [[be-so-good-that-they-cant-ignore-you]]
+- [[/blog/redirect-traffic-from-naked-domain-to-www]]
+- [Be so good that they cant ignore you](/blog/be-so-good-that-they-cant-ignore-you)
+- [[projects]]

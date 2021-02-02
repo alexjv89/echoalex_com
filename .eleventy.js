@@ -7,40 +7,55 @@
 // const markdownItAnchor = require("markdown-it-anchor");
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPassthroughCopy(".htaccess");
   eleventyConfig.addPassthroughCopy("files");
-  eleventyConfig.addTransform("wiki-links", function (content, outputPath) {
-    if (outputPath && outputPath.endsWith(".html")) {
-      // We remove outer brackets from links
-      let output = content.replace(/(\[+(\<a(.*?)\<\/a\>)\]+)/g, "$2");
-      return output;
-    }
-    return content;
-  }); 
   let markdownIt = require("markdown-it");
-  let markdownItReplaceLink = require("markdown-it-replace-link");
+  // let markdownItReplaceLink = require("markdown-it-replace-link");
+  let markdownItObsidian = require("markdown-it-obsidian")();
   let markdownItOptions = {
     html: true,
-    replaceLink: function (link, env) {
-      const isRelativePattern = /^(?!http|\/).*/;
-      const lastSegmentPattern = /[^\/]+(?=\/$|$)/i;
-      const isRelative = isRelativePattern.test(link);
+    // linkPattern: /\[\[([\w\s/!]+)(\|([\w\s/!]+))?\]\]/,
+    // replaceLink: function (link, env) {
+    //   const isRelativePattern = /^(?!http|\/).*/;
+    //   const lastSegmentPattern = /[^\/]+(?=\/$|$)/i;
+    //   const isRelative = isRelativePattern.test(link);
 
-      if (isRelative) {
-        const hasLastSegment = lastSegmentPattern.exec(env.page.url);
-        // If it's nested, replace the last segment
-        if (hasLastSegment && env.page.url) {
-          return env.page.url.replace(lastSegmentPattern, link);
-        }
-        // If it's at root, just add the beginning slash
-        return env.page.url + link;
-      }
+    //   if (isRelative) {
+    //     const hasLastSegment = lastSegmentPattern.exec(env.page.url);
+    //     // If it's nested, replace the last segment
+    //     if (hasLastSegment && env.page.url) {
+    //       return env.page.url.replace(lastSegmentPattern, link);
+    //     }
+    //     // If it's at root, just add the beginning slash
+    //     return env.page.url + link;
+    //   }
 
-      return link;
-    },
+    //   return link;
+    // },
   };
-  let markdownLib = markdownIt(markdownItOptions).use(markdownItReplaceLink);
+  let markdownLib = markdownIt(markdownItOptions)
+    .use(markdownItObsidian)
+    // .use(markdownItReplaceLink)
+    // .use(function(md) {
+    //     // Recognize Mediawiki links ([[text]])
+    //     md.linkify.add("[[", {
+    //         validate: /^\s?([^\[\]\|\n\r]+)(\|[^\[\]\|\n\r]+)?\s?\]\]/,
+    //         normalize: match => {
+    //             const parts = match.raw.slice(2,-2).split("|");
+    //             parts[0] = parts[0].replace(/.(md|markdown)\s?$/i, "");
+    //             match.text = (parts[1] || parts[0]).trim();
+    //             match.url = `/notes/${parts[0].trim()}/`;
+    //         }
+    //     })
+    // })
   eleventyConfig.setLibrary("md", markdownLib);
+  // eleventyConfig.addTransform("wiki-links", function (content, outputPath) {
+  //   if (outputPath && outputPath.endsWith(".html")) {
+  //     // We remove outer brackets from links
+  //     let output = content.replace(/(\[+(\<a(.*?)\<\/a\>)\]+)/g, "$2");
+  //     return output;
+  //   }
+  //   return content;
+  // }); 
   // eleventyConfig.addPlugin(pluginRss);
   // eleventyConfig.addPlugin(pluginSyntaxHighlight);
   // eleventyConfig.addPlugin(pluginNavigation);
