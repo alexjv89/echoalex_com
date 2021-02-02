@@ -6,10 +6,13 @@ layout: layouts/post.ejs
 # Blog Archive
 
 ## 2020
-
-- [Sample post](/blog/first_post)
+- [[making-the-decision-to-purchase-visualise-value]]
+- [[how-to-create-a-read-only-user]]
+- [[day-1-of-1hr-meditation]]
 
 ## 2019
+- [[change-zsh-terminal-prompt]]
+- [[book-digest-knock-knock-by-seth-godin]]
 - [[use-trix-as-rich-text-editor]]
 - [[simple-internal-sitemaps]]
 - [[setup-metabase-via-aws-elastic-beanstalk]]
