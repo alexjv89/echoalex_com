@@ -1,3 +1,9 @@
+---
+title: You need to assume the end is very far away
+layout: layouts/post.ejs
+created_at: 2021-08-15
+---
+
 # If you don't know the end, then you need to assume the end is very far away
 
 ## Context
