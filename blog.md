@@ -5,6 +5,9 @@ layout: layouts/post.ejs
 
 # Blog Archive
 
+## 2021
+- [[end-is-very-far-away]]
+
 ## 2020
 - [[making-the-decision-to-purchase-visualise-value]]
 - [[how-to-create-a-read-only-user]]
