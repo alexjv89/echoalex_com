@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "add-domain": "echo \"new.echoalex.com\" > _site/CNAME",
+    "add-domain": "echo \"www.echoalex.com\" > _site/CNAME",
     "build": "env NODE_ENV=production npx eleventy"
   },
   "keywords": [],
@@ -13,6 +13,6 @@
   "license": "ISC",
   "dependencies": {
     "@11ty/eleventy": "^0.11.1",
-    "markdown-it-obsidian": "^1.0.2"
+    "markdown-it-obsidian": "^1.1.0"
   }
 }
