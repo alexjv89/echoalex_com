@@ -3,7 +3,7 @@
 Value and quality dont have a linear relationship. The equation is non-linear. It looks something like this:
 ![[Pasted image 20210909160449.png]]
 
-If you are positioning your service as a premium service, then a small drop in quality will result in a large drop in value. In the example able 10% drop in quality results in 50% drop in value. 
+If you are positioning your service as a premium service, then a small drop in quality will result in a large drop in value. In the example 10% drop in quality results in 50% drop in value. 
 
 The last 10% of quality is where 50% of value is generated for the customer. 
 

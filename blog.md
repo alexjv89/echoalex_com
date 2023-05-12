@@ -5,7 +5,11 @@ layout: layouts/post.ejs
 
 # Blog Archive
 
+## 2023
+- [[i-dont-have-time]]
+
 ## 2021
+- [[value-vs-quality]]
 - [[end-is-very-far-away]]
 
 ## 2020
