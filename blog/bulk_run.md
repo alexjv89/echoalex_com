@@ -133,3 +133,6 @@ node move_data.js --date='2023-11-28' # run
 node move_data.js --date='2023-11-29' # run
 node move_data.js --date='2023-11-30' # run
 ```
+
+github repo - https://github.com/alexjv89/bulkrun
+npm - https://www.npmjs.com/package/@alexjv89/bulkrun
