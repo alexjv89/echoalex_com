@@ -6,6 +6,7 @@ layout: layouts/post.ejs
 # Blog Archive
 
 ## 2023
+- [[bulk_run]]
 - [[i-dont-have-time]]
 
 ## 2021
