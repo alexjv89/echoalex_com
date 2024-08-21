@@ -1,12 +1,12 @@
 ---
 layout: layouts/post.ejs
-title: sample post
+title: All blogs
 ---
 
 # Blog Archive
 
 ## 2024
-- [[blog/2024/time-aware|time-aware]]
+- [[time-aware]]
 
 ## 2023
 
@@ -39,6 +39,6 @@ title: sample post
 - [[cashflowy-monthly-update-november]]
 - [[cashflowy-monthly-update-october]]
 - [[thinking-of-things-from-a-long-term-perspective]]
-- [[/blog/redirect-traffic-from-naked-domain-to-www]]
-- [Be so good that they cant ignore you](/blog/be-so-good-that-they-cant-ignore-you)
+- [[redirect-traffic-from-naked-domain-to-www]]
+- [Be so good that they cant ignore you](be-so-good-that-they-cant-ignore-you.md)
 - [[projects]]

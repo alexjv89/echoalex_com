@@ -1,7 +1,9 @@
 ---
-title: Landing page2
+title: Echoalex.com
 layout: layouts/post.ejs
-tags: alex, personal
+tags:
+  - alex
+  - personal
 public: false
 ---
 

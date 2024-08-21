@@ -1,5 +1,5 @@
 ---
-title: sample post
+title: Projects by Alex
 layout: layouts/post.ejs
 ---
 

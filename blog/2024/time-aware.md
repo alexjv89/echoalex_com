@@ -5,8 +5,9 @@ created_at: 2024-08-21
 ---
 # Time Aware
 
-This is a personal project that I recently started working on. You can find it here - https://github.com/alexjv89/time-aware
+![[time-aware.png]]
 
+This is a personal project that I recently started working on. You can find it here - https://github.com/alexjv89/time-aware
 ## About
 
 This app/widget is designed for people who have ADHD symptoms:

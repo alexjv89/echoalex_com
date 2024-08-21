@@ -1,9 +1,7 @@
----
-layout: layouts/post.ejs
-title: Readme
----
+this is deployed on http://echoalex.com
 
-# Page header1
-
-
-# test 2
+### How to write a blog
+- in `blog`-> `2024`-> create a file and write the blog
+- in `blog.md` -> add the file to the index so that it is findable
+- commit the code
+- github will auto deploy the blog
