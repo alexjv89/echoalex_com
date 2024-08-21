@@ -6,7 +6,7 @@ title: All blogs
 # Blog Archive
 
 ## 2024
-- [[time-aware]]
+- [Time aware](/blog/2024/time-aware)
 
 ## 2023
 
