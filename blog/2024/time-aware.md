@@ -5,7 +5,7 @@ created_at: 2024-08-21
 ---
 # Time Aware
 
-![[time-aware.png]]
+![[time-aware-screenshot.png]]
 
 This is a personal project that I recently started working on. You can find it here - https://github.com/alexjv89/time-aware
 ## About
