@@ -3,7 +3,13 @@ layout: layouts/post.ejs
 title: All blogs
 ---
 
+
+
 # Blog Archive
+
+
+## 2024
+- [Modal messages vs UI messages](/blog/2025/modelmessages-vs-uimessages)
 
 ## 2024
 - [Time aware](/blog/2024/time-aware)
