@@ -8,6 +8,10 @@ title: All blogs
 # Blog Archive
 
 
+## 2026
+- [Some problems need an assembly line, not an agent](/blog/2026/some-problems-need-an-assembly-line-not-an-agent)
+
+
 ## 2024
 - [Modal messages vs UI messages](/blog/2025/modelmessages-vs-uimessages)
 
