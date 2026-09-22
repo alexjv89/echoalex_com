@@ -1,18 +1,22 @@
 {
   "name": "echoalex_com",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "add-domain": "echo \"www.echoalex.com\" > _site/CNAME",
-    "build": "env NODE_ENV=production npx eleventy"
+    "predev": "node scripts/prepare-public.mjs",
+    "dev": "next dev",
+    "prebuild": "node scripts/prepare-public.mjs",
+    "build": "next build",
+    "test": "node --test"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@11ty/eleventy": "^0.11.1",
-    "markdown-it-obsidian": "^1.1.0"
+    "gray-matter": "^4.0.3",
+    "next": "15.5.14",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-markdown": "^10.1.0",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.1"
   }
 }

@@ -1,5 +1,11 @@
 _site
 node_modules
+.next
+out
+public/assets
+public/files
+public/CNAME
+public/.nojekyll
 
 
 /.obsidian/workspace

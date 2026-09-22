@@ -1,6 +1,10 @@
 # Replace Eleventy with a Next.js Static Blog
 
-## Status: EVALUATION
+## Status: IN PROGRESS (~90%)
+
+Implementation, local build, tests, and desktop/mobile visual parity are complete. Eleventy is
+removed. Remaining: confirm the GitHub Pages deploy serves the export at the custom domain after
+the first push.
 
 Replace Eleventy with Next.js while preserving the published content, URLs, appearance, custom
 domain, and GitHub Pages deployment. Reuse the shape of the FinOpsBricks documentation pipeline,
@@ -80,53 +84,55 @@ Key decisions:
 
 ## Implementation Phases
 
-### Phase 1: Confirm migration decisions 🔄
+### Phase 1: Confirm migration decisions ✅
 
 - [x] Inventory pages, posts, assets, layouts, Markdown extensions, and deployment files.
 - [x] Compare the site with the FinOpsBricks Next.js documentation pipeline.
 - [x] Confirm that Next.js static export can retain static hosting.
-- [ ] Build a small renderer spike covering a normal post, Obsidian image embed, raw HTML post, and
+- [x] Build a small renderer spike covering a normal post, Obsidian image embed, raw HTML post, and
   Loom iframe.
-- [ ] Confirm whether Semantic UI's mobile sidebar should retain jQuery or use a small React client
-  component.
-- [ ] Record whether accidental layout output such as the visible `TEST` text should be preserved.
+- [x] Confirm whether Semantic UI's mobile sidebar should retain jQuery or use a small React client
+  component. (Reimplemented as a React client component in `SiteShell`.)
+- [x] Record whether accidental layout output such as the visible `TEST` text should be preserved.
+  (Not reproduced; the stray `test.js` was removed.)
 
-### Phase 2: Add the Next.js publishing pipeline ❌
+### Phase 2: Add the Next.js publishing pipeline ✅
 
-- [ ] Add the minimal Next.js, React, frontmatter, Markdown, and compatibility dependencies.
-- [ ] Add static-export configuration with trailing slashes.
-- [ ] Add a content loader that discovers root pages and posts without requiring frontmatter.
-- [ ] Add deterministic slug generation for every published Markdown file.
-- [ ] Add static route generation and page metadata.
-- [ ] Add the Markdown renderer and Obsidian compatibility layer.
-- [ ] Exclude `README.md`, WIP documents, and other repository Markdown from published routes.
+- [x] Add the minimal Next.js, React, frontmatter, Markdown, and compatibility dependencies.
+- [x] Add static-export configuration with trailing slashes.
+- [x] Add a content loader that discovers root pages and posts without requiring frontmatter.
+- [x] Add deterministic slug generation for every published Markdown file.
+- [x] Add static route generation and page metadata.
+- [x] Add the Markdown renderer and Obsidian compatibility layer.
+- [x] Exclude `README.md`, WIP documents, and other repository Markdown from published routes.
 
-### Phase 3: Recreate the existing presentation ❌
+### Phase 3: Recreate the existing presentation ✅
 
-- [ ] Convert the base and post EJS layouts to React components.
-- [ ] Preserve desktop and mobile navigation behavior.
-- [ ] Preserve the Semantic UI stylesheet, fonts, images, and content width.
-- [ ] Serve existing `assets/` and `files/` URLs unchanged.
-- [ ] Verify code blocks, lists, images, raw HTML, and the Loom embed.
+- [x] Convert the base and post EJS layouts to React components.
+- [x] Preserve desktop and mobile navigation behavior.
+- [x] Preserve the Semantic UI stylesheet, fonts, images, and content width.
+- [x] Serve existing `assets/` and `files/` URLs unchanged.
+- [x] Verify code blocks, lists, images, raw HTML, and the Loom embed.
 
-### Phase 4: Preserve deployment ❌
+### Phase 4: Preserve deployment ✅
 
-- [ ] Replace the Eleventy build command with `next build`.
-- [ ] Publish `out/` instead of `_site/` in GitHub Actions.
-- [ ] Ensure `out/CNAME` contains `www.echoalex.com`.
-- [ ] Keep deployment on pushes to `master` unless branch policy changes separately.
-- [ ] Remove the obsolete Eleventy dependency and configuration after parity checks pass.
+- [x] Replace the Eleventy build command with `next build`.
+- [x] Publish `out/` instead of `_site/` in GitHub Actions.
+- [x] Ensure `out/CNAME` contains `www.echoalex.com`.
+- [x] Keep deployment on pushes to `master` unless branch policy changes separately.
+- [x] Remove the obsolete Eleventy dependency and configuration after parity checks pass.
 
-### Phase 5: Verify parity ❌
+### Phase 5: Verify parity 🔄
 
-- [ ] Compare the complete old and new route lists.
-- [ ] Verify that internal links resolve in the exported site.
-- [ ] Verify that every referenced local image exists in the export.
-- [ ] Compare representative desktop and mobile pages against the Eleventy output.
-- [ ] Test the post without frontmatter and posts containing raw HTML.
-- [ ] Run the production build from a clean dependency install.
+- [x] Compare the complete old and new route lists. (26 content routes match; `README` correctly
+  dropped, `404` added.)
+- [x] Verify that internal links resolve in the exported site.
+- [x] Verify that every referenced local image exists in the export.
+- [x] Compare representative desktop and mobile pages against the Eleventy output.
+- [x] Test the post without frontmatter and posts containing raw HTML.
+- [x] Run the production build from a clean dependency install.
 - [ ] Deploy and smoke-test the custom domain before removing rollback artifacts.
-- [ ] Update `README.md` with the Next.js authoring and deployment workflow.
+- [x] Update `README.md` with the Next.js authoring and deployment workflow.
 
 ## Acceptance Criteria
 

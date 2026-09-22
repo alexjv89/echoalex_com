@@ -1,0 +1,65 @@
+.site-navigation {
+  background: rgb(255, 255, 255) !important;
+}
+
+.navigation-container {
+  font-size: 16px;
+}
+
+.navigation-toggle {
+  appearance: none;
+  background: transparent !important;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.page-spacing {
+  padding-top: 4.5rem;
+}
+
+.article-content {
+  font-size: 18px !important;
+  line-height: 1.5em !important;
+}
+
+.article-content img {
+  height: auto;
+  max-width: 100%;
+}
+
+.article-content pre {
+  overflow-x: auto;
+}
+
+.sidebar-dimmer {
+  background: rgba(0, 0, 0, 0.45);
+  border: 0;
+  cursor: pointer;
+  inset: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1001;
+}
+
+.ui.sidebar.visible {
+  display: block !important;
+  transform: translate3d(0, 0, 0) !important;
+  visibility: visible !important;
+  z-index: 1002;
+}
+
+@media only screen and (max-width: 700px) {
+  .secondary.pointing.menu .item,
+  .secondary.pointing.menu .menu {
+    display: none;
+  }
+
+  .secondary.pointing.menu .toc.item {
+    display: block;
+  }
+
+  .segment h2 {
+    color: #00296b;
+  }
+}
