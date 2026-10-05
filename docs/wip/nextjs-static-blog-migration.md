@@ -3,8 +3,9 @@
 ## Status: IN PROGRESS (~90%)
 
 Implementation, local build, tests, and desktop/mobile visual parity are complete. Eleventy is
-removed. Remaining: confirm the GitHub Pages deploy serves the export at the custom domain after
-the first push.
+removed. The deploy workflow was stuck on retired `ubuntu-20.04` runners (no deploy since
+2024-08-21); it now uses `ubuntu-latest`. Remaining: confirm the GitHub Pages deploy serves the
+export at the custom domain.
 
 Replace Eleventy with Next.js while preserving the published content, URLs, appearance, custom
 domain, and GitHub Pages deployment. Reuse the shape of the FinOpsBricks documentation pipeline,
@@ -131,7 +132,8 @@ Key decisions:
 - [x] Compare representative desktop and mobile pages against the Eleventy output.
 - [x] Test the post without frontmatter and posts containing raw HTML.
 - [x] Run the production build from a clean dependency install.
-- [ ] Deploy and smoke-test the custom domain before removing rollback artifacts.
+- [x] Move the deploy job from the retired `ubuntu-20.04` runner to `ubuntu-latest`.
+- [ ] Deploy and smoke-test the custom domain.
 - [x] Update `README.md` with the Next.js authoring and deployment workflow.
 
 ## Acceptance Criteria
@@ -159,19 +161,20 @@ Key decisions:
 
 ## Rollback
 
-Keep the Eleventy configuration and the last known-good `_site/` deployment path until the Next.js
-export passes parity checks. If production verification fails, restore the previous GitHub Pages
-workflow and redeploy the Eleventy output.
+The Eleventy configuration and layouts were removed in `7d2ab27`. If production verification
+fails, check out the parent of that commit, rebuild with Eleventy, and redeploy `_site/` to the
+`gh-pages` branch. The previous `gh-pages` commit (2024-08-21) also remains in branch history.
 
 ## Related Files
 
-- `.eleventy.js` - Current Markdown configuration and passthrough assets
-- `_includes/layouts/base.ejs` - Current site shell and navigation
-- `_includes/layouts/post.ejs` - Current content layout
-- `.github/workflows/build.yml` - Current GitHub Pages build and deployment
-- `package.json` - Current Eleventy build and dependencies
-- `blog.md` - Current manual blog archive
-- `CNAME` - Current custom domain
+- `next.config.mjs` - Static export configuration
+- `src/lib/content.js` - Content loader and slug generation
+- `src/lib/obsidian-links.js` - Obsidian link and embed compatibility
+- `src/components/SiteShell.jsx` - Site shell and mobile navigation
+- `scripts/prepare-public.mjs` - Copies assets, files, and `CNAME` into `public/`
+- `.github/workflows/build.yml` - GitHub Pages build and deployment
+- `blog.md` - Manual blog archive
+- `CNAME` - Custom domain
 - [FinOpsBricks content loader](https://github.com/finopsbricks/app-template/blob/main/src/lib/docs.js)
 - [FinOpsBricks dynamic docs route](https://github.com/finopsbricks/app-template/blob/main/src/app/docs/%5B...slug%5D/page.jsx)
 - [WIP file standard](https://github.com/alexjv89/engineering-standards/blob/main/git-workflow/wip-files.md)
