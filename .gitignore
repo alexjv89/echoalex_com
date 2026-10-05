@@ -7,6 +7,5 @@ public/CNAME
 public/.nojekyll
 
 
-/.obsidian/workspace
-.obsidian/workspace
-.obsidian/graph.json
+.obsidian/
+.playwright-mcp/

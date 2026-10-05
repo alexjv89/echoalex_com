@@ -1,11 +1,11 @@
 # Replace Eleventy with a Next.js Static Blog
 
-## Status: IN PROGRESS (~90%)
+## Status: COMPLETE
 
 Implementation, local build, tests, and desktop/mobile visual parity are complete. Eleventy is
 removed. The deploy workflow was stuck on retired `ubuntu-20.04` runners (no deploy since
-2024-08-21); it now uses `ubuntu-latest`. Remaining: confirm the GitHub Pages deploy serves the
-export at the custom domain.
+2024-08-21); it now uses `ubuntu-latest`. The Next.js export was deployed on 2026-10-05 and
+verified at `www.echoalex.com`.
 
 Replace Eleventy with Next.js while preserving the published content, URLs, appearance, custom
 domain, and GitHub Pages deployment. Reuse the shape of the FinOpsBricks documentation pipeline,
@@ -123,7 +123,7 @@ Key decisions:
 - [x] Keep deployment on pushes to `master` unless branch policy changes separately.
 - [x] Remove the obsolete Eleventy dependency and configuration after parity checks pass.
 
-### Phase 5: Verify parity 🔄
+### Phase 5: Verify parity ✅
 
 - [x] Compare the complete old and new route lists. (26 content routes match; `README` correctly
   dropped, `404` added.)
@@ -133,7 +133,8 @@ Key decisions:
 - [x] Test the post without frontmatter and posts containing raw HTML.
 - [x] Run the production build from a clean dependency install.
 - [x] Move the deploy job from the retired `ubuntu-20.04` runner to `ubuntu-latest`.
-- [ ] Deploy and smoke-test the custom domain.
+- [x] Deploy and smoke-test the custom domain. (All 26 content routes, `/assets/`, and `/files/`
+  return 200 on `www.echoalex.com`; unknown paths serve the Next.js 404.)
 - [x] Update `README.md` with the Next.js authoring and deployment workflow.
 
 ## Acceptance Criteria
