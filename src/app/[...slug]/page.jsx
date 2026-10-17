@@ -1,11 +1,14 @@
 import { notFound } from 'next/navigation';
 import MarkdownPage from '@/components/MarkdownPage';
-import { PartOfProjects, ProjectCatalog, ProjectDetails, ProjectHeader } from '@/components/Projects';
+import ProjectCatalog from '@/components/ProjectCatalog';
+import { PartOfProjects, ProjectDetails, ProjectHeader } from '@/components/Projects';
 import {
+  PROJECT_KINDS,
+  PROJECT_STATUSES,
   getPageBySlug,
   getPostsForProject,
   getProjectById,
-  getProjectsByKind,
+  getProjects,
   getStaticPageParams,
   isBlogPost,
   isProjectPage,
@@ -15,6 +18,13 @@ export const dynamicParams = false;
 
 export function generateStaticParams() {
   return getStaticPageParams();
+}
+
+// Only what the client-side catalog needs, so page bodies don't ship to the browser.
+function getProjectSummaries() {
+  return getProjects().map(({ id, url, title, tagline, kind, status, started, ended, videos }) => ({
+    id, url, title, tagline, kind, status, started, ended, videos,
+  }));
 }
 
 export async function generateMetadata({ params }) {
@@ -35,7 +45,7 @@ export default async function ContentPage({ params }) {
   if (page.url === '/projects/') {
     return (
       <MarkdownPage content={page.content}>
-        <ProjectCatalog groups={getProjectsByKind()} />
+        <ProjectCatalog kinds={PROJECT_KINDS} projects={getProjectSummaries()} statuses={PROJECT_STATUSES} />
       </MarkdownPage>
     );
   }

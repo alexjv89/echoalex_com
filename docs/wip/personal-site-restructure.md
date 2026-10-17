@@ -45,7 +45,11 @@ blog post, and every index was maintained by hand.
 ## Decisions
 
 - **2026-10-17: Start with the basics.** No featured projects, themes or home-page sections yet.
-  The catalog groups by `kind` only. Revisit once the content is in.
+  Revisit once the content is in.
+- **2026-10-17: One list, newest first, with filters.** The catalog is a single list sorted by
+  `started`, with client-side status and type filters. No grouped view.
+- **2026-10-17: Dropped thin projects** (3D-printed business card, LED matrix, Self Employed
+  Indian, arduinotweet, YouTube extractor, Bangalore Unicycle Club docs).
 - **2026-10-17: Cashflowy (open source) and Mr Albert are dead.** Both are listed as projects
   with status `dead`.
 - **2026-10-17: Sim racing gets a placeholder page.** Alex will share photos and videos.
@@ -61,13 +65,13 @@ blog post, and every index was maintained by hand.
 - `projects/*.md`: one file per project; slug is the file name, URL is `/projects/<slug>/`.
   Required frontmatter: `title`, `tagline`, `kind`, `started`, `status`. Optional: `ended`,
   `videos` (YouTube ids), `links` (`{ label, url }`). An invalid file fails the build.
-- `/projects/`: `projects.md` intro (the 2012 maker manifesto) plus the generated catalog, grouped
-  by kind, newest first, with a YouTube thumbnail when there is a video.
+- `/projects/`: `projects.md` intro (the 2012 maker manifesto) plus the generated catalog: one
+  list, newest first, with status and type filters and a YouTube thumbnail when there is a video.
 - `/projects/<slug>/`: header (title, tagline, years, status), story, links, video thumbnails, and
   "Writing about this" (posts that declare the project).
 - Posts with `projects:` show "Part of <project>".
 - `templates/project.md` and a README section on adding a project.
-- 34 projects seeded from the research inventory, mostly as stubs (frontmatter plus a line or two).
+- 28 projects (34 seeded, 6 dropped) from the research inventory, mostly as stubs (frontmatter plus a line or two).
   The "maker years" content moved into individual project pages.
 
 ## Implementation Phases
@@ -132,7 +136,9 @@ blog post, and every index was maintained by hand.
 - `templates/project.md` - Template for a new project
 - `src/lib/content.js` - Content discovery, project validation and queries
 - `src/lib/obsidian-links.js` - Wikilink resolution, including ambiguous names
-- `src/components/Projects.jsx` - Catalog, project header and details, "Part of"
+- `src/components/ProjectCatalog.jsx` - Client-side catalog with status and type filters
+- `src/components/Projects.jsx` - Project header and details, "Part of"
+- `src/components/project-meta.jsx` - Years, status label and thumbnail helpers shared by both
 - `src/app/[...slug]/page.jsx` - Picks the layout for the catalog, projects and posts
 - `projects.md` - Catalog intro
 - `tests/content.test.js`, `tests/obsidian-links.test.js` - Content and link checks

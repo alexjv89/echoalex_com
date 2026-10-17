@@ -64,10 +64,6 @@
   }
 }
 
-.project-group {
-  margin-top: 2.5rem;
-}
-
 .project-meta {
   align-items: center;
   color: rgba(0, 0, 0, 0.6);
@@ -99,4 +95,38 @@
   color: rgba(0, 0, 0, 0.6);
   margin-top: 2rem;
   padding-top: 1rem;
+}
+
+.project-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 2rem;
+}
+
+.project-filter {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-filter-label {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  width: 3.5rem;
+}
+
+.project-filter .ui.buttons {
+  flex-wrap: wrap;
+}
+
+.project-filter .ui.button {
+  text-transform: capitalize;
+}
+
+.project-count {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 15px;
+  margin-top: 1.5rem;
 }

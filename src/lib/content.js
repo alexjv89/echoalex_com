@@ -1,23 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
+import { PROJECT_KINDS, PROJECT_STATUSES } from './project-taxonomy.js';
+
+export { PROJECT_KINDS, PROJECT_STATUSES };
 
 const ROOT_PAGE_FILES = ['index.md', 'blog.md', 'projects.md', 'now.md'];
 const BLOG_DIRECTORY = 'blog';
 const PROJECTS_DIRECTORY = 'projects';
 const CONTENT_ROOT = process.cwd();
-
-// Display order of project kinds on /projects/.
-export const PROJECT_KINDS = [
-  { id: 'build', label: 'Things I built' },
-  { id: 'software', label: 'Software' },
-  { id: 'adventure', label: 'Adventures' },
-  { id: 'hobby', label: 'Hobbies' },
-  { id: 'venture', label: 'Ventures' },
-  { id: 'talk', label: 'Talks' },
-];
-
-export const PROJECT_STATUSES = ['active', 'dormant', 'done', 'dead'];
 
 const REQUIRED_PROJECT_FIELDS = ['title', 'tagline', 'kind', 'started', 'status'];
 
@@ -138,14 +129,6 @@ export function getProjects() {
     .filter(isProjectPage)
     .map(projectFromPage)
     .sort((left, right) => right.started.localeCompare(left.started) || left.title.localeCompare(right.title));
-}
-
-export function getProjectsByKind() {
-  const projects = getProjects();
-
-  return PROJECT_KINDS
-    .map((kind) => ({ ...kind, projects: projects.filter((project) => project.kind === kind.id) }))
-    .filter((group) => group.projects.length > 0);
 }
 
 export function getProjectById(id) {

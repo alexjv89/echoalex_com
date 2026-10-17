@@ -8,7 +8,6 @@ import {
   getPostsForProject,
   getProjectById,
   getProjects,
-  getProjectsByKind,
   getStaticPageParams,
   isBlogPost,
   isProjectPage,
@@ -62,9 +61,9 @@ test('every project has valid frontmatter and a stable URL', () => {
   }
 });
 
-test('groups every project under exactly one kind', () => {
-  const grouped = getProjectsByKind().flatMap((group) => group.projects);
-  assert.equal(grouped.length, getProjects().length);
+test('lists projects newest first', () => {
+  const started = getProjects().map((project) => project.started);
+  assert.deepEqual(started, [...started].sort().reverse());
 });
 
 test('every post that names a project points at a real one', () => {
