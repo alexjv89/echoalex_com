@@ -1,6 +1,7 @@
 ---
 title: Using cashflowy on mobile like an app
 layout: layouts/post.ejs
+projects: [cashflowy-open-source]
 created_at: 2019-04-03
 ---
 # Using cashflowy on mobile like an app

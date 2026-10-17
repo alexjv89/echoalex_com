@@ -1,6 +1,7 @@
 ---
 title: Time Aware
 layout: layouts/post.ejs
+projects: [time-aware]
 created_at: 2024-08-21
 ---
 # Time Aware

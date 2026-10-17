@@ -1,6 +1,15 @@
 import { notFound } from 'next/navigation';
 import MarkdownPage from '@/components/MarkdownPage';
-import { getPageBySlug, getStaticPageParams } from '@/lib/content';
+import { PartOfProjects, ProjectCatalog, ProjectDetails, ProjectHeader } from '@/components/Projects';
+import {
+  getPageBySlug,
+  getPostsForProject,
+  getProjectById,
+  getProjectsByKind,
+  getStaticPageParams,
+  isBlogPost,
+  isProjectPage,
+} from '@/lib/content';
 
 export const dynamicParams = false;
 
@@ -21,6 +30,34 @@ export default async function ContentPage({ params }) {
 
   if (!page) {
     notFound();
+  }
+
+  if (page.url === '/projects/') {
+    return (
+      <MarkdownPage content={page.content}>
+        <ProjectCatalog groups={getProjectsByKind()} />
+      </MarkdownPage>
+    );
+  }
+
+  if (isProjectPage(page)) {
+    const project = getProjectById(page.slug.at(-1));
+
+    return (
+      <MarkdownPage content={project.content} header={<ProjectHeader project={project} />}>
+        <ProjectDetails posts={getPostsForProject(project.id)} project={project} />
+      </MarkdownPage>
+    );
+  }
+
+  if (isBlogPost(page) && page.frontmatter.projects) {
+    const projects = page.frontmatter.projects.map(getProjectById).filter(Boolean);
+
+    return (
+      <MarkdownPage content={page.content}>
+        <PartOfProjects projects={projects} />
+      </MarkdownPage>
+    );
   }
 
   return <MarkdownPage content={page.content} />;

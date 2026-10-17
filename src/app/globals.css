@@ -63,3 +63,40 @@
     color: #00296b;
   }
 }
+
+.project-group {
+  margin-top: 2.5rem;
+}
+
+.project-meta {
+  align-items: center;
+  color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  font-size: 15px;
+  gap: 0.75rem;
+}
+
+.project-header {
+  margin-bottom: 2rem;
+}
+
+.project-breadcrumb {
+  font-size: 15px;
+  margin-bottom: 0.25rem;
+}
+
+.project-tagline {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 20px;
+}
+
+.project-videos.ui.cards {
+  margin-top: 0.5rem;
+}
+
+.project-part-of {
+  border-top: 1px solid rgba(34, 36, 38, 0.15);
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 2rem;
+  padding-top: 1rem;
+}

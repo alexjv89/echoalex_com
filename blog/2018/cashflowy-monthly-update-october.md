@@ -1,6 +1,7 @@
 ---
 title: Cashflowy – Monthly update (October)
 layout: layouts/post.ejs
+projects: [cashflowy-open-source]
 created_at: 2018-11-01
 ---
 # Cashflowy – Monthly update (October)

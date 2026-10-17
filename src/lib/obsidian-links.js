@@ -4,16 +4,31 @@ import { getAllPages } from './content.js';
 
 const FILES_DIRECTORY = path.join(process.cwd(), 'files');
 
+// Marks a bare name shared by two pages (e.g. a post and a project); those links need a folder prefix.
+const AMBIGUOUS = Symbol('ambiguous');
+
+function setTarget(targets, name, url) {
+  const existing = targets.get(name);
+  targets.set(name, existing && existing !== url ? AMBIGUOUS : url);
+}
+
 function createTargetIndex() {
   const targets = new Map();
 
   for (const page of getAllPages()) {
     const name = page.slug.at(-1) || 'index';
-    targets.set(name, page.url);
-    targets.set(`${name}.md`, page.url);
+    setTarget(targets, name, page.url);
+    setTarget(targets, `${name}.md`, page.url);
+
+    if (page.slug.length > 1) {
+      targets.set(page.slug.join('/'), page.url);
+      targets.set(`${page.slug[0]}/${name}`, page.url);
+    }
   }
 
-  for (const file_name of fs.readdirSync(FILES_DIRECTORY)) {
+  const file_entries = fs.readdirSync(FILES_DIRECTORY, { withFileTypes: true }).filter((entry) => entry.isFile());
+
+  for (const { name: file_name } of file_entries) {
     targets.set(file_name, `/files/${encodeURIComponent(file_name)}`);
     targets.set(`files/${file_name}`, `/files/${encodeURIComponent(file_name)}`);
   }
@@ -24,6 +39,10 @@ function createTargetIndex() {
 function resolveTarget(raw_target, targets) {
   const [target, heading] = raw_target.split('#', 2);
   const resolved_target = targets.get(target.trim());
+
+  if (resolved_target === AMBIGUOUS) {
+    throw new Error(`Ambiguous Obsidian link: ${raw_target} (prefix it with a folder, e.g. [[projects/${target.trim()}]])`);
+  }
 
   if (!resolved_target) {
     throw new Error(`Unresolved Obsidian link: ${raw_target}`);

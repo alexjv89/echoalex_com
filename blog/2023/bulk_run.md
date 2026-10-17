@@ -1,6 +1,7 @@
 ---
 title: Bulk run command line scripts
 layout: layouts/post.ejs
+projects: [bulkrun]
 created_at: 2023-11-23
 ---
 # Bulk run command line scripts

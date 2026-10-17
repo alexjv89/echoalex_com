@@ -21,6 +21,12 @@ test('converts Obsidian image embeds to public file URLs', () => {
   );
 });
 
+test('requires a folder prefix when a post and a project share a name', () => {
+  assert.throws(() => replaceObsidianLinks('[[time-aware]]'), /Ambiguous Obsidian link: time-aware/);
+  assert.equal(replaceObsidianLinks('[[projects/time-aware]]'), '[projects/time-aware](/projects/time-aware/)');
+  assert.equal(replaceObsidianLinks('[[blog/time-aware|post]]'), '[post](/blog/2024/time-aware/)');
+});
+
 test('fails the build for unresolved Obsidian targets', () => {
   assert.throws(
     () => replaceObsidianLinks('[[missing-page]]'),
